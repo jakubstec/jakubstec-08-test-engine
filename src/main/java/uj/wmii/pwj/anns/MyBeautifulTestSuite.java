@@ -22,4 +22,39 @@ public class MyBeautifulTestSuite {
         throw new NullPointerException();
     }
 
+    @MyTest(expectedResult = "expectedValue")
+    public String testExpectedFail() {
+        return "wrongValue";
+    }
+
+    @MyTest(params = {"A", "B"}, expectedResult = "OK")
+    public String testParamWithExpected(String param) {
+        return "OK";
+    }
+
+    @MyTest
+    public void testError() {
+        System.out.println("Division by 0");
+        int x = 5 / 0;
+    }
+
+    @MyTest(expectedResult = "67")
+    public int testReturnIntPass() {
+        return 67;
+    }
+
+    @MyTest(expectedResult = "anything")
+    public String testReturnStringFail() {
+        return "something";
+    }
+
+    @MyTest
+    public void testThrowsException() {
+        throw new IllegalStateException("This is an exception.");
+    }
+
+    @MyTest(expectedResult = "true")
+    public boolean testBooleanPass() {
+        return true;
+    }
 }
